@@ -121,13 +121,15 @@ export default function TestimonialPage() {
       patient_name: name.trim(),
       experience_text: comment.trim(),
       rating,
-      session_date: sessionDate,
+      // "" rompería el parseo de fecha: guardamos null para que la UI use created_at.
+      session_date: sessionDate || null,
     };
 
     try {
       let { error } = await client.from(EXPERIENCES_TABLE).insert(row);
-      // Resiliencia: si la columna session_date aún no existe en la tabla, insertamos sin ella.
-      if (error && /session_date/i.test(error.message)) {
+      // Resiliencia: si la columna session_date aún no existe (o el valor no
+      // es válido para el tipo date), reintentamos sin ella.
+      if (error && /session_date|invalid input syntax for type date/i.test(error.message)) {
         ({ error } = await client.from(EXPERIENCES_TABLE).insert({
           patient_name: row.patient_name,
           experience_text: row.experience_text,

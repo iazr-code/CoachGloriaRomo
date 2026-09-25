@@ -9,22 +9,22 @@ import {
 import { seedTestimonials, type Experience } from '../data/seedTestimonials';
 import { EASE_OUT_EXPO, VIEWPORT_ONCE, fadeInUp, staggerContainer } from '../lib/motion';
 
-function formatDate(iso: string): string {
-  try {
-    // Fecha pura (YYYY-MM-DD): se parsea como fecha local para evitar
-    // desfases de zona horaria (UTC→local restando un día).
-    const pureDate = /^\d{4}-\d{2}-\d{2}$/.exec(iso);
-    const date = pureDate
-      ? new Date(Number(pureDate[1]), Number(pureDate[2]) - 1, Number(pureDate[3]))
-      : new Date(iso);
-    return date.toLocaleDateString('es-CO', {
-      day: 'numeric',
-      month: 'long',
-      year: 'numeric',
-    });
-  } catch {
-    return '';
-  }
+function formatDate(iso?: string | null): string {
+  if (!iso) return '';
+  // Fecha pura (YYYY-MM-DD): se parsea como fecha local para evitar
+  // desfases de zona horaria (UTC→local restando un día).
+  const pureDate = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso.trim());
+  const date = pureDate
+    ? new Date(Number(pureDate[1]), Number(pureDate[2]) - 1, Number(pureDate[3]))
+    : new Date(iso);
+  // new Date(...) inválido no lanza excepción: toLocaleDateString devolvería
+  // literalmente "Invalid Date", por eso validamos antes de formatear.
+  if (Number.isNaN(date.getTime())) return '';
+  return date.toLocaleDateString('es-CO', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
 }
 
 function Stars({ rating }: { rating: number }) {
@@ -201,7 +201,7 @@ export default function TestimonialsLive() {
                   <div className="min-w-0">
                     <p className="truncate text-sm font-semibold text-ink">{t.patient_name}</p>
                     <p className="truncate text-xs text-ink-muted">
-                      {formatDate(t.session_date ?? t.created_at)}
+                      {formatDate(t.session_date || t.created_at)}
                     </p>
                   </div>
                 </div>
