@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>OG Cover · Gloria Marina Romo</title>
+    <!--
+      Plantilla de la imagen Open Graph (1200×630).
+      Regenerar: npm run dev → abrir http://localhost:5173/tools/og-cover.html
+      → captura full page a 1200px → guardar como public/og-cover.png
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=block"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+      }
+      .card {
+        position: relative;
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+        background:
+          radial-gradient(900px 600px at 8% -15%, rgba(99, 102, 241, 0.22), transparent 60%),
+          radial-gradient(800px 560px at 70% 115%, rgba(217, 27, 92, 0.28), transparent 60%),
+          linear-gradient(135deg, #050814 0%, #0a1128 60%, #070b19 100%);
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        color: #f8fafc;
+      }
+
+      /* Foto a la derecha */
+      .photo {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 470px;
+        height: 630px;
+        object-fit: cover;
+        object-position: 50% 18%;
+      }
+      .photo-fade {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 560px;
+        height: 630px;
+        background: linear-gradient(90deg, #050814 6%, rgba(5, 8, 20, 0.55) 45%, rgba(5, 8, 20, 0) 78%);
+      }
+      .photo-edge {
+        position: absolute;
+        top: 0;
+        right: 470px;
+        width: 3px;
+        height: 630px;
+        background: linear-gradient(180deg, rgba(217, 27, 92, 0) 0%, rgba(217, 27, 92, 0.85) 50%, rgba(99, 102, 241, 0) 100%);
+      }
+
+      .content {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 760px;
+        height: 630px;
+        padding: 64px 40px 64px 72px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 34px;
+      }
+      .mark {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 56px;
+        height: 56px;
+        border: 2.5px solid #ec4899;
+        border-radius: 50%;
+        background: rgba(5, 8, 20, 0.75);
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic;
+        font-weight: 600;
+        font-size: 32px;
+        color: #f8fafc;
+      }
+      .brand-name {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 30px;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        line-height: 1;
+      }
+      .brand-role {
+        margin-top: 7px;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: #94a3b8;
+      }
+
+      .eyebrow {
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: #ec4899;
+        margin-bottom: 22px;
+      }
+
+      h1 {
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 600;
+        font-size: 62px;
+        line-height: 1.04;
+        letter-spacing: -0.01em;
+        max-width: 700px;
+      }
+      h1 em {
+        font-style: italic;
+        background: linear-gradient(90deg, #d91b5c 0%, #ec4899 55%, #6366f1 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .chips {
+        display: flex;
+        gap: 14px;
+        margin-top: 40px;
+      }
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        padding: 12px 22px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.07);
+        font-size: 16px;
+        font-weight: 600;
+        color: #f8fafc;
+        backdrop-filter: blur(8px);
+      }
+      .chip.primary {
+        border-color: transparent;
+        background: linear-gradient(90deg, #d91b5c, #ec4899);
+        box-shadow: 0 12px 30px -12px rgba(217, 27, 92, 0.6);
+      }
+      .dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: #34d399;
+      }
+
+      .wave {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 760px;
+        height: 90px;
+        z-index: 1;
+        opacity: 0.65;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <img class="photo" src="/gloria-romo.jpeg" alt="Gloria Marina Romo Pantoja" />
+      <div class="photo-fade"></div>
+      <div class="photo-edge"></div>
+
+      <div class="content">
+        <div class="brand">
+          <div class="mark">G</div>
+          <div>
+            <div class="brand-name">Gloria Marina Romo Pantoja</div>
+            <div class="brand-role">Coach Ontológica</div>
+          </div>
+        </div>
+
+        <div class="eyebrow">El lenguaje crea realidades</div>
+
+        <h1>
+          Transforma tu realidad a través del <em>poder de tus palabras</em>
+        </h1>
+
+        <div class="chips">
+          <span class="chip primary">Primera sesión sin costo</span>
+          <span class="chip"><span class="dot"></span>Virtual · Presencial</span>
+        </div>
+      </div>
+
+      <svg class="wave" viewBox="0 0 760 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M0 62 C 90 34, 170 88, 260 60 S 430 30, 520 58 S 680 86, 760 54"
+          stroke="url(#w)"
+          stroke-width="2.5"
+          stroke-linecap="round"
+        />
+        <defs>
+          <linearGradient id="w" x1="0" y1="0" x2="760" y2="0" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#6366F1" stop-opacity="0" />
+            <stop offset="0.5" stop-color="#EC4899" />
+            <stop offset="1" stop-color="#6366F1" stop-opacity="0.2" />
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+  </body>
+</html>

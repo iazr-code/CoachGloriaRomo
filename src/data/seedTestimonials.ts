@@ -4,6 +4,8 @@ export interface Experience {
   experience_text: string
   rating: number
   created_at: string
+  /** Fecha de la sesión (columna opcional `session_date` en Supabase). */
+  session_date?: string | null
 }
 
 /** Testimonios semilla: se muestran cuando Supabase no está configurado

@@ -11,7 +11,13 @@ import { EASE_OUT_EXPO, VIEWPORT_ONCE, fadeInUp, staggerContainer } from '../lib
 
 function formatDate(iso: string): string {
   try {
-    return new Date(iso).toLocaleDateString('es-CO', {
+    // Fecha pura (YYYY-MM-DD): se parsea como fecha local para evitar
+    // desfases de zona horaria (UTC→local restando un día).
+    const pureDate = /^\d{4}-\d{2}-\d{2}$/.exec(iso);
+    const date = pureDate
+      ? new Date(Number(pureDate[1]), Number(pureDate[2]) - 1, Number(pureDate[3]))
+      : new Date(iso);
+    return date.toLocaleDateString('es-CO', {
       day: 'numeric',
       month: 'long',
       year: 'numeric',
@@ -194,13 +200,37 @@ export default function TestimonialsLive() {
                   </span>
                   <div className="min-w-0">
                     <p className="truncate text-sm font-semibold text-ink">{t.patient_name}</p>
-                    <p className="truncate text-xs text-ink-muted">{formatDate(t.created_at)}</p>
+                    <p className="truncate text-xs text-ink-muted">
+                      {formatDate(t.session_date ?? t.created_at)}
+                    </p>
                   </div>
                 </div>
               </motion.li>
             ))}
           </AnimatePresence>
         </motion.ul>
+
+        <motion.div
+          className="mt-10 flex flex-col items-center justify-between gap-4 rounded-2xl border border-white/12 bg-white/[0.05] px-6 py-5 backdrop-blur-xl sm:flex-row"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={VIEWPORT_ONCE}
+          transition={{ duration: 0.7, ease: EASE_OUT_EXPO }}
+        >
+          <div className="text-center sm:text-left">
+            <p className="font-serif text-xl text-ink">¿Fuiste paciente en una sesión?</p>
+            <p className="mt-1 text-sm text-ink-muted">
+              Tu experiencia, en 2 minutos: nombre, fecha, estrellas y comentario. Se publica en
+              tiempo real en esta página.
+            </p>
+          </div>
+          <a
+            href="/testimonio"
+            className="shrink-0 rounded-full bg-brand-magenta px-6 py-3 text-sm font-semibold text-white shadow-glow-magenta transition-colors duration-300 hover:bg-brand-pink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-pink"
+          >
+            Comparte tu experiencia
+          </a>
+        </motion.div>
       </div>
     </section>
   );

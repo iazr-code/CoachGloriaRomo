@@ -11,9 +11,8 @@ export const BRAND_FULL = 'Gloria Marina Romo Pantoja'
 
 /**
  * Dominio canónico de la Landing — úsalo para canonical / Open Graph / sitemap.
- * REEMPLAZA este valor cuando el sitio tenga dominio propio de producción.
  */
-export const SITE_URL = 'https://gloriamarinoromo.com'
+export const SITE_URL = 'https://coach-gloria-romo.vercel.app'
 
 export interface NavLink {
   label: string
@@ -28,8 +27,20 @@ export const NAV_LINKS: NavLink[] = [
   { label: 'Agendar', href: '#agendar' },
 ]
 
-/**
- * Redes sociales — añade las URLs reales cuando estén disponibles
- * (el carrd https://coachgloriaromo.carrd.co/ las lista como pendientes).
- */
-export const SOCIAL_LINKS: { label: string; href: string }[] = []
+export type SocialKind = 'instagram' | 'facebook' | 'tiktok'
+
+export interface SocialLink {
+  label: string
+  href: string
+  kind: SocialKind
+}
+
+/** Redes sociales oficiales de Gloria Marina Romo Pantoja. */
+export const SOCIAL_LINKS: SocialLink[] = [
+  { label: 'Instagram', href: 'https://www.instagram.com/glomar0305/', kind: 'instagram' },
+  { label: 'Facebook', href: 'https://www.facebook.com/gloria.romo.9', kind: 'facebook' },
+  { label: 'TikTok', href: 'https://www.tiktok.com/@marina.pantoja1', kind: 'tiktok' },
+]
+
+/** URL del formulario de testimonios (se comparte con pacientes por WhatsApp). */
+export const TESTIMONIAL_URL = `${SITE_URL}/testimonio`

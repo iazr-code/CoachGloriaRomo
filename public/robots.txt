@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
 
-# REEMPLAZA gloriamarinoromo.com por tu dominio real de producción
-Sitemap: https://gloriamarinoromo.com/sitemap.xml
+# El formulario de testimonios no debe indexarse
+Disallow: /testimonio
+
+Sitemap: https://coach-gloria-romo.vercel.app/sitemap.xml

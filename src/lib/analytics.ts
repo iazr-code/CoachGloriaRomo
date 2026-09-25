@@ -50,3 +50,8 @@ export function trackSchedule(): void {
 export function trackWhatsApp(): void {
   trackEvent('contact', { method: 'whatsapp' })
 }
+
+/** Envío del formulario de testimonio de paciente (/testimonio). */
+export function trackTestimonial(): void {
+  trackEvent('testimonial_submitted')
+}
