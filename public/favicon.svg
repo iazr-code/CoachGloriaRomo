@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Gloria Marina Romo Pantoja">
+  <defs>
+    <linearGradient id="gmr-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#D91B5C"/>
+      <stop offset="1" stop-color="#6366F1"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="#050814"/>
+  <circle cx="32" cy="32" r="24" fill="none" stroke="url(#gmr-grad)" stroke-width="3"/>
+  <text x="32" y="41" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="30" font-style="italic" fill="#F8FAFC">G</text>
+  <path d="M14 47 q6 -5 12 0 t12 0 t12 0" fill="none" stroke="url(#gmr-grad)" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

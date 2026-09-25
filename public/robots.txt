@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# REEMPLAZA gloriamarinoromo.com por tu dominio real de producción
+Sitemap: https://gloriamarinoromo.com/sitemap.xml
